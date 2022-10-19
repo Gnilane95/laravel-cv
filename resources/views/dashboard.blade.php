@@ -1,17 +1,25 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@php
+    $styleLink="font-bold hover:text-red-700 hover:underline underline-offset-4 block pb-5 text-blue-700"
+@endphp
+<x-layouts.layout title="Dashbord">
+    <nav class="flex justify-between bg-black p-7">
+        <p class="font-black text-3xl text-red-800 ">Dashboard</p>
+        <div class="flex space-x-5 text-white font-bold text-xl">
+            <p >{{ Auth::user()->name }}</p>
+            <a href="/" class="hover:text-red-800 hover:underline">Déconnexion</a>
+        </div>
+    </nav>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
+    <div class="container">
+        <h1 class="uppercase text-xl text-red-700 font-black mt-6">
+            Bienvenue <span class="text-primary-focus underline">{{ Auth::user()->name }}</span> sur ton Dashbord
+        </h1>
+        <div class="py-12">
+            <a href="{{ route('identities.create') }}" class="{{ $styleLink }}">Gestion de l'identité</a>
+            <a href="" class="{{ $styleLink }}"></a>
+            <a href="" class="{{ $styleLink }}"></a>
+            <a href="" class="{{ $styleLink }}"></a>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.layout>
+

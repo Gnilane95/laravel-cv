@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+	@include('partials._session')
 		{{ $slot }}
 
 		@vite('resources/js/app.js')
