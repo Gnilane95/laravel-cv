@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Identity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class IdentityController extends Controller
 {
@@ -94,9 +95,39 @@ class IdentityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Identity $identity)
     {
-        //
+        if($request->hasFile('url_img')){
+            //delete previous image
+            Storage::delete($identity->url_img);
+            //store the new image
+            $identity->url_img = $request->file('url_img')->store('cover');
+        };
+        $request->validate([
+            'url_img' =>'required|sometimes|max:5000|mimes:png,jpg,jpeg,webp',
+            'first_name' =>'required|string|min:5|max:30',
+            'last_name' =>'required|string|min:5|max:30',
+            'job' =>'required|string|min:5|max:100',    
+            'description' =>'required|string|min:20|max:1000',
+            'tel' =>'required|max:10|min:10',
+            'e_mail' =>'required|email:rfc,dns',
+            'street' =>'required|string',
+            'cp_city' =>'required|string|',
+        ]);
+        $identity->update([
+            'url_img' =>$identity->url_img,
+            'first_name' =>$request->first_name,
+            'last_name' =>$request->last_name,
+            'job' =>$request->job,   
+            'description' =>$request->description,
+            'tel' =>$request->tel,
+            'e_mail' =>$request->e_mail,
+            'street' =>$request->street,
+            'cp_city' =>$request->cp_city,
+            'updated_at' =>now()
+        ]);
+        
+        return redirect()->route('home')->with('status','Infos modify');
     }
 
     /**
