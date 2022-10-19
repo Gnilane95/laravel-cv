@@ -58,7 +58,35 @@
                 <input type="text" name="cp_city" id="" class="w-72" value="{{ old('cp_city') }}">
                 <x-error-msg name="cp_city" />
             </div>
-            <button class="btn btn primary" type="submit">Envoyer</button>
+            <button class="btn btn-primary" type="submit">Envoyer</button>
         </form>
+    </div>
+    <div class="my-10">
+        <h2 class="text-center text-4xl text-red-800 font-bold underline">Infos de mon identité</h2>
+        {{-- show datas --}}
+        <div class="">
+            @forelse ($identities as $identity)
+                <div class="flex space-x-10 mx-28 my-10">
+                    <img src="{{ asset('storage/'.$identity->url_img) }}" alt="" class="max-w-md">
+                    <div class="text-lg">
+                        <p><span class="font-bold">Prénom :</span> {{ $identity->first_name }}</p>
+                        <p class="mt-2"><span class="font-bold">Nom : </span>{{ $identity->last_name }}</p>
+                        <p class="mt-2"><span class="font-bold">Job :</span> {{ $identity->job }}</p>
+                        <p class="mt-2"><span class="font-bold">Description :</span> {{ $identity->description }}
+                        </p>
+                        <p class="mt-2"><span class="font-bold">Téléphone :</span> {{ $identity->tel }}</p>
+                        <p class="mt-2"><span class="font-bold">E-mail :</span> {{ $identity->e_mail }}</p>
+                        <p class="mt-2"><span class="font-bold">Rue :</span> {{ $identity->street }}</p>
+                        <p class="mt-2"><span class="font-bold">CP | Ville :</span> {{ $identity->cp_city }}</p>
+                    </div>
+                </div>
+            @empty
+                <p>Pas d'infos disponibles</p>
+            @endforelse
+        </div>
+        {{-- btn modify --}}
+        <div class="mx-28 my-10">
+            <a href="{{ $identity->id }}/edit" class="btn btn-primary">Modifier</a>
+        </div>
     </div>
 </x-layouts.layout>

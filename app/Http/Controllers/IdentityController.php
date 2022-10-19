@@ -15,7 +15,7 @@ class IdentityController extends Controller
     public function index()
     {
         $identities = Identity::all();
-        return view('pages.home', compact('identities'));
+        return view ('pages.home', compact('identities'));
     }
 
     /**
@@ -71,9 +71,9 @@ class IdentityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        
     }
 
     /**
@@ -82,9 +82,9 @@ class IdentityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Identity $identity)
     {
-        //
+        return view('pages.edit-identity', compact('identity'));
     }
 
     /**
@@ -105,8 +105,10 @@ class IdentityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Identity $identity)
     {
-        //
+        
+        $identity->delete();
+        return back()->with('status', "L'article a bien été supprimé");
     }
 }

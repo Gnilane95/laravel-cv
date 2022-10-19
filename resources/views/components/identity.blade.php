@@ -10,7 +10,7 @@
 	'cp_city'
 
 ])
-<div class="mb-28">
+<div class="">
 		<img
 				alt="{{ $first_name }}"
 				class="mx-auto h-52 w-52 rounded-full md:h-72 md:w-72"
@@ -28,7 +28,7 @@
 				</p>
 		</div>
 		<!-- info -->
-		<div class="mb-8s mt-12 border-l-4 py-2 pl-6 text-lg leading-loose text-gray-600">
+		<div class="mb-8 mt-12 border-l-4 py-2 pl-6 text-lg leading-loose text-gray-600">
 				<p>{{ $tel }}</p>
 				<p>{{ $e_mail }}</p>
 				<div class="font-bold italic">
@@ -36,8 +36,5 @@
 						<p>{{ $cp_city }}</p>
 				</div>
 		</div>
-		{{-- btn --}}
-		<div>
-			
-		</div>
+		
 </div>
