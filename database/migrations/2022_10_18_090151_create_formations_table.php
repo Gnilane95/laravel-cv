@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('formation_title');
             $table->string('school');
-            $table->integer('year');
+            $table->string('year');
             $table->timestamps();
         });
     }

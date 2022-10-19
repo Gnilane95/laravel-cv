@@ -2,7 +2,11 @@
 <div class="p-12 md:py-20 md:px-32">
 		<x-xperience.xperience />
 		<div class="pt-16">
-				<x-formation.formation />
+			@forelse ($formations as $formation)
+				<x-formation.formation :formation_title="$formation->formation_title" :school="$formation->school" :year="$formation->year" />
+			@empty
+				
+			@endforelse
 		</div>
 		<div class="pt-16">
 				<x-skill.skill />

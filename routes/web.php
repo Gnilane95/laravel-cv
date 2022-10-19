@@ -9,6 +9,7 @@ use App\Http\Controllers\SkillController;
 
 Route::get('/', [HomeController::class, 'index'])->name("home");
 Route::get('/', [IdentityController::class, 'index'])->name("home");
+Route::get('/', [FormationController::class, 'index'])->name("home");
 Route::resource('identities', IdentityController::class);
 Route::resource('formations', FormationController::class);
 Route::resource('experiences', ExperienceController::class);

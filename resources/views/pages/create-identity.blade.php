@@ -86,7 +86,7 @@
         </div>
         {{-- btn modify --}}
         <div class="mx-28 my-10">
-            <a href="{{ $identity->id }}/edit" class="btn btn-primary">Modifier</a>
+            <a href="{{ route('identities.edit',$identity->id) }}" class="btn btn-primary">Modifier</a>
         </div>
     </div>
 </x-layouts.layout>

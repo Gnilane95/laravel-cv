@@ -42,9 +42,9 @@ class IdentityController extends Controller
         // dd($request->all('e_mail'));
         $request->validate([
             'url_img' =>'required|max:5000|mimes:png,jpg,jpeg,webp',
-            'first_name' =>'required|string|min:5|max:30',
-            'last_name' =>'required|string|min:5|max:30',
-            'job' =>'required|string|min:5|max:100',    
+            'first_name' =>'required|string|max:30',
+            'last_name' =>'required|string|max:30',
+            'job' =>'required|string|max:100',    
             'description' =>'required|string|min:20|max:1000',
             'tel' =>'required|max:10|min:10',
             'e_mail' =>'required|email:rfc,dns',
